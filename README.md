@@ -253,5 +253,120 @@ var a = [1, 2, 3, 4],
 ```
 
 
+##Function
+
+###rest参数
+
+**语法**
+
+```
+function foo(...a) {
+    //使用参数a
+    //a默认为1个空数组
+}
+```
+* 参数只有一个或者多参数但只有**最后一个**参数可以使用rest形式
+* 函数调用时, rest参数**前面的所有参数**必须正常填充
+* 没有传实参的rest只是一个**空数组**
+* 完全替代arguments对象
+
+###默认参数
+
+**语法**
+
+* 不用arguments对象too
+
+```
+function bar(a = 1,b = 2,c = 3) {
+	//操作参数
+}
+```
+
+```
+function bar(a = 1,b = 2,c = 3) {
+	return [a,b,c];
+}
+
+bar(0,0,0)								>_ [0,0,0]
+bar(undefined,0,0)						>_ [1,0,0]
+bar(undefined,undefined,undefined)		>_ [1,2,3]
+```
+
+```
+function boo(a = 1, b) { ... }
+//等价于
+function boo(a = 1, b = undefined) { ... }
+```
 
 ##String
+
+###" ".startsWith()
+**描述 : 判断当前字符串是否以参数1开头, 返回布尔值**
+**参数 :** 
+* **要搜索的子字符串**
+* 在原始字符串中搜索子串的开始位置, 默认为0
+
+```
+"abc".startsWith("a")		    //true
+"abc".startsWith("b", 1)		//true
+```
+
+
+###" ".endsWith()
+**描述 : 判断当前字符串是否以参数1结尾, 返回布尔值**
+**参数 :** 
+* **要搜索的子字符串**
+* 在原始字符串中搜索子串的结束位置, 相当于在父串执行slice(0, 本参数-1)后再进行查找, 默认为父串的length
+
+```
+"abc".endsWith("c")		    //true
+"abc".endsWith("c", 3)		//true
+```
+
+###" ".includes()
+**描述 : 判断当前字符串是否含有参数1, 返回布尔值, 区分大小写**
+**参数 :** 
+* **要搜索的子字符串**
+* 在原始字符串中搜索子串的开始位置, 默认为0
+
+```
+"abc".includes("c")		    //true
+"abc".includes("c", 2)		//true
+```
+
+###" ".repeat()
+**描述 : 重复当前字符串若干次**
+**参数 :** 
+* **要重复的次数**
+	* 0和NaN会返回空字符串
+	* 小数会自动向下取整
+	* 小于0会报错
+	* 取值范围是[0, infinity)
+
+```
+"x".repeat(0)		    //""
+"x".repeat(3.9)		    //"xxx"
+```
+
+###" ".trim()
+**描述 : 去掉当前字符串2端的空白字符(space tab no-break space)以及所有的行结束符**
+
+```
+"x ".trim()		    //"x"
+" x ".trim()		    //"x"
+```
+
+###" ".trimLeft()
+**描述 : 去掉当前字符串左侧的空白字符(space tab no-break space)以及所有的行结束符**
+
+```
+" x ".trimLeft()		    //"x "
+```
+
+###" ".trimRight()
+**描述 : 去掉当前字符串右侧的空白字符(space tab no-break space)以及所有的行结束符**
+
+```
+" x ".trimRight()		    //" x"
+```
+
