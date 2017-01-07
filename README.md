@@ -12,12 +12,7 @@
 * 执行参数2时的 *this* 值
 
 ```
-(function (){
-	return Array.from( arguments )
-}(1, 2, 3));
-//[1,2,3]
-//操作等同于
-return [...arguments];
+Array.from( 1, 2, 3 )		//[1,2,3]
 ```
 
 ###Array.isArray()
@@ -26,10 +21,7 @@ return [...arguments];
 * **要判断的对象**
 	* 传入多个参数时第一个参数以外的多余参数会被忽略
 ```
-(function (){
-	return Array.isArray( [1,2,3] )
-}());
-//true
+Array.isArray( [1,2,3] )		//true
 ```
 
 ###Array.of(...)
@@ -40,10 +32,7 @@ return [...arguments];
 * 同array构造器不同, 本方法传入一个参数则返回一个只有参数本身的数组
 
 ```
-(function (){
-	return Array.of( 1,2,3 )
-}());
-//[1, 2, 3]
+Array.of( 1,2,3 )		//[1, 2, 3]
 ```
 
 ###[ ].copyWithin()
@@ -86,8 +75,7 @@ var a = [1, 2, 3, 4],
 * 执行测试函数时this的值
 
 ```
-[1, 2, 3, 4].every( x => x > 2 );
-//false
+[1, 2, 3, 4].every( x => x > 2 );		//false
 ```
 
 ###[ ].fill()
@@ -115,8 +103,7 @@ var a = [1, 2, 3, 4],
 * 执行测试函数时this的值
 
 ```
-[1, 2, 3, 4].filter( x => x > 2 );
-//[3,4]
+[1, 2, 3, 4].filter( x => x > 2 );		//[3,4]
 ```
 
 ###[ ].find()
@@ -129,8 +116,7 @@ var a = [1, 2, 3, 4],
 * 执行测试函数时this的值
 
 ```
-[1, 2, 3, 4].find( x => x > 2 );
-//3
+[1, 2, 3, 4].find( x => x > 2 );		//3
 ```
 
 ###[ ].findIndex()
@@ -143,8 +129,7 @@ var a = [1, 2, 3, 4],
 * 执行测试函数时this的值
 
 ```
-[1, 2, 3, 4].findIndex( x => x > 2 );
-//2
+[1, 2, 3, 4].findIndex( x => x > 2 );		//2
 ```
 
 ###[ ].includes()
@@ -154,7 +139,7 @@ var a = [1, 2, 3, 4],
 * 指定要开始寻找的索引
 
 ```
-[1, 2, 3, 4].includes( 1 );    //true
+[1, 2, 3, 4].includes( 1 );    	  //true
 [1, 2, 3, 4].includes( 1, 1 );    //false
 ```
 
@@ -194,8 +179,7 @@ var a = [1, 2, 3, 4],
 * 执行测试函数时this的值
 
 ```
-[1, 2, 3, 4].map( x => x * 2 );
-//[2,4,6,8]
+[1, 2, 3, 4].map( x => x * 2 );		//[2,4,6,8]
 ```
 ###[ ].reduce()
 **描述 : 接收一个函数作为累加器, 使数组中的元素从左到右开始合并, 最终成为一个值.**
@@ -352,7 +336,7 @@ function boo(a = 1, b = undefined) { ... }
 **描述 : 去掉当前字符串2端的空白字符(space tab no-break space)以及所有的行结束符**
 
 ```
-"x ".trim()		    //"x"
+"x ".trim()		    	//"x"
 " x ".trim()		    //"x"
 ```
 
@@ -369,4 +353,5 @@ function boo(a = 1, b = undefined) { ... }
 ```
 " x ".trimRight()		    //" x"
 ```
+
 
