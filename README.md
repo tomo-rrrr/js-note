@@ -1,6 +1,6 @@
 #JS笔记
 
-##let&const
+##Let&Const
 ###let关键字
 * 绑定到所在区域,外部不可见
 * 外部同名变量同内部变量互不影响
@@ -14,8 +14,85 @@
 
 
 
-**!必输参数们为加粗**
+##Destructuring
 
+按等号右侧的值来给等号左侧的变量赋值,前提是右侧的值必须
+* 转换成对象后具备Iterator接口
+* 本身自带Iterator接口
+如果一个右侧的成员不===undefined, 默认值不会生效.
+```
+let [a, b, c] = [1, 2, 3]
+a // 1
+b // 2
+c // 3
+
+let [ , , z] = [1, 2, 3]
+z // 3
+
+let [yoo, ...xoo] = [1,2,3,4]
+yoo // 1
+xoo // [2,3,4]
+
+let [woo] = [];
+woo // undefined
+
+//默认值
+let [doo = 6] = [];
+doo // 6
+```
+
+对象解构变量名与属性名一致的情况, 解构失败则为undefined.
+
+```
+let {a, b, c} = {b: 123, a: 456};
+a // 456
+b // 123
+c // undefined
+```
+
+变量名与属性名不一致的情况
+```
+let { foo: baz } = { foo: 'aaa', bar: 'bbb' };
+//实质上是
+let { foo: foo, bar: bar } = { foo: "aaa", bar: "bbb" };
+```
+
+字符串的解构
+
+```
+const [a, b, c, d, e] = 'hello';
+a // "h"
+b // "e"
+c // "l"
+d // "l"
+e // "o"
+```
+
+###字符串
+1. \uxxxx形式的Unicode表示法
+	* \u0000 - \uFFFF
+
+```
+"\u0061" === "a"	//true
+//超出\u0000 - \uFFFF这个范围字符
+"\uD842\uDFB7" === "𠮷"	或
+"\u{20BB7}" === "𠮷"
+
+```
+
+2. 可以使用for..of遍历
+
+```
+for( let i of "abc") {
+    console.log(i);
+}
+// a
+// b
+// c
+```
+
+
+**!必输参数们为加粗**
 ##Array
 
 ###Array.from()
@@ -367,5 +444,6 @@ function boo(a = 1, b = undefined) { ... }
 ```
 " x ".trimRight()		    //" x"
 ```
+
 
 
