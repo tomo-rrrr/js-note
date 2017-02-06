@@ -14,7 +14,7 @@
 
 
 
-##解构Destructuring
+##Destructuring
 
 按等号右侧的值来给等号左侧的变量赋值,前提是右侧的值必须
 * 转换成对象后具备Iterator接口
@@ -176,6 +176,20 @@ let mod = "./some";
 import { foo } from mod;
 ```
 * 重复执行同一句import, 那么只会执行一次
+
+```
+import 'lodash';
+import 'lodash';
+//只会执行一次
+```
+* 整体加载
+
+```
+//使用别名
+import * as woo from "./doo";
+//不使用别名
+import lodash from "lodash";
+```
 
 
 
