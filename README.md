@@ -68,7 +68,7 @@ d // "l"
 e // "o"
 ```
 
-###字符串
+##字符串
 1. \uxxxx形式的Unicode表示法
 	* \u0000 - \uFFFF
 
@@ -90,6 +90,96 @@ for( let i of "abc") {
 // b
 // c
 ```
+
+##Module
+###export命令
+**export命令用于规定模块的对外接口**,一个模块就是一个独立的文件, 除非使用export命令输出变量, 不然文件内的所有变量外部都不可访问.
+
+```
+export var firstName = "bob";
+export var lastName = "mike";
+export var year = 1000;
+//等同于
+var firstName = "bob";
+var lastName = "mike";
+var year = 1000;
+export {firstName, lastName, year};
+```
+* 输出函数或类
+
+```
+export function someFn() {
+	//xxxxx
+}
+//等同于
+function someFn() {
+	//xxxxx
+};
+export {someFn}
+```
+* 但要注意会出错的情况
+
+```
+export 1;
+
+var  m = 1;
+export m;
+//没有提供对外的接口, 1只是1个值, 不是接口.
+//输出函数或类也遵循相同语法
+//正确写法是这样
+export var m = 1;
+
+var m = 1;
+export {m};
+
+var n = 1;
+export {n as m};
+```
+* export可以出现在模块顶层的任意位置. 如果处于块级作用域内会报错.
+
+```
+//报错
+function woo () {
+	export var doo = 123;
+} 
+```
+
+###import命令
+
+* 使用导入模块的部分接口
+```
+//大括号中的变量名必须与被导入模块中导出的模块名称相同(类似对象的解构)
+import {a} from "./what";
+```
+
+* 使用别名
+
+```
+import {a as b} from "./what";
+//使用b的代码...
+```
+* 命令提升
+
+```
+//不会报错,import会提升至整个模块头部
+foo();
+import {foo} from "./some-mod";
+```
+
+* 不能使用表达式和变量
+
+```
+//报错
+import {'f' + "oo"} from "./some"
+
+let mod = "./some";
+import { foo } from mod;
+```
+* 重复执行同一句import, 那么只会执行一次
+
+
+
+
 
 
 **!必输参数们为加粗**
@@ -444,6 +534,7 @@ function boo(a = 1, b = undefined) { ... }
 ```
 " x ".trimRight()		    //" x"
 ```
+
 
 
 
