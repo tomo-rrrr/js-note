@@ -14,7 +14,7 @@
 
 
 
-##Destructuring
+##解构Destructuring
 
 按等号右侧的值来给等号左侧的变量赋值,前提是右侧的值必须
 * 转换成对象后具备Iterator接口
